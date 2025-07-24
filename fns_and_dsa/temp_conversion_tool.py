@@ -1,3 +1,6 @@
+global CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+
+# Global conversion factors
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
 
@@ -8,6 +11,7 @@ def convert_to_celsius(fahrenheit):
     :param fahrenheit: Temperature in Fahrenheit
     :return: Temperature in Celsius
     """
+    # Use global variable for conversion factor
     return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
 def convert_to_fahrenheit(celsius):
@@ -17,10 +21,17 @@ def convert_to_fahrenheit(celsius):
     :param celsius: Temperature in Celsius
     :return: Temperature in Fahrenheit
     """
+    # Use global variable for conversion factor
     return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
-temperature = int(input("Enter temperature to convert: "))
-conversion_type = str(input("Is this temperature in Celsius or Fahrenheit? (C/F):"))
+# User interaction and input validation
+try:
+    temperature_input = input("Enter temperature to convert: ")
+    temperature = float(temperature_input)
+except ValueError:
+    raise ValueError("Invalid temperature. Please enter a numeric value.")
+
+conversion_type = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip()
 
 if conversion_type.upper() == 'C':
     converted_temp = convert_to_fahrenheit(temperature)
@@ -28,3 +39,5 @@ if conversion_type.upper() == 'C':
 elif conversion_type.upper() == 'F':
     converted_temp = convert_to_celsius(temperature)
     print(f"{temperature}°F is {converted_temp:.2f}°C")
+else:
+    raise ValueError("Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
