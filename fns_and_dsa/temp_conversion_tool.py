@@ -1,36 +1,41 @@
-global FAHRENHEIT_TO_CELSIUS_FACTOR 
-global CELSIUS_TO_FAHRENHEIT_FACTOR 
+FAHRENHEIT_TO_CELSIUS_FACTOR=None
+CELSIUS_TO_FAHRENHEIT_FACTOR=None
 
 def convert_to_celsius(fahrenheit):
+    global FAHRENHEIT_TO_CELSIUS_FACTOR 
+    FAHRENHEIT_TO_CELSIUS_FACTOR= 5/9
     """Convert Fahrenheit to Celsius using global factor."""
-    FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
     return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
 def convert_to_fahrenheit(celsius):
+    global CELSIUS_TO_FAHRENHEIT_FACTOR 
+    CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5
     """Convert Celsius to Fahrenheit using global factor."""
-    CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
     return celsius * CELSIUS_TO_FAHRENHEIT_FACTOR + 32
 
-def main():
-    """Main function to interact with the user."""
-    temp_input = input("Enter the temperature value: ").strip()
-    unit_input = input("Is this in Celsius or Fahrenheit? (C/F): ").strip().upper()
 
-    # Input validation for numeric temperature
-    try:
-        temperature = float(temp_input)
-    except ValueError:
-        raise ValueError("Invalid temperature. Please enter a numeric value.")
+temperature= int(input("Enter the temperature to convert: "))
+convert_type = str(input("Is this temperature in Celsius or Fahrenheit? (C/F) ")).upper()
 
-    # Conversion logic
-    if unit_input == 'C':
-        converted_temp = convert_to_fahrenheit(temperature)
-        print(f"{temperature}°C is {converted_temp:.2f}°F")
-    elif unit_input == 'F':
-        converted_temp = convert_to_celsius(temperature)
-        print(f"{temperature}°F is {converted_temp:.2f}°C")
-    else:
-        raise ValueError("Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
+if convert_type == 'C':
+    converted_temp = convert_to_fahrenheit(temperature)
+    print(f"{temperature}°C is equal to {converted_temp:.2f}°F")
+elif convert_type == 'F':
+    converted_temp = convert_to_celsius(temperature)
+    print(f"{temperature}°F is equal to {converted_temp:.2f}°C")
+else:
+    print("Invalid input. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
+    
 
-if __name__ == "__main__":
-    main()
+
+
+
+
+
+
+
+
+
+
+
+
