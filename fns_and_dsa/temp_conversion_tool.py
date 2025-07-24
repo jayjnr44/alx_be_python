@@ -24,7 +24,7 @@ elif convert_type == 'F':
     converted_temp = convert_to_celsius(temperature)
     print(f"{temperature}°F is {converted_temp:.2f}°C")
 elif temperature is not type(int):
-    print("Invalid temperature. Please enter a numeric value")
+    print("Invalid temperature. Please enter a numeric value. ")
 else:
     print("Invalid conversion type. Please enter 'C' for Celsius or 'F' for Fahrenheit.")  
 
