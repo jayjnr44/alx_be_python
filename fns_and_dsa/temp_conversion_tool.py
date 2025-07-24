@@ -19,13 +19,14 @@ convert_type = str(input("Is this temperature in Celsius or Fahrenheit? (C/F) ")
 
 if convert_type == 'C':
     converted_temp = convert_to_fahrenheit(temperature)
-    print(f"{temperature}°C is equal to {converted_temp:.2f}°F")
+    print(f"{temperature}°C is {converted_temp:.2f}°F")
 elif convert_type == 'F':
     converted_temp = convert_to_celsius(temperature)
-    print(f"{temperature}°F is equal to {converted_temp:.2f}°C")
+    print(f"{temperature}°F is {converted_temp:.2f}°C")
+elif temperature is not type(int):
+    print("Invalid temperature. Please enter a numeric value")
 else:
-    print("Invalid input. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
-    
+    print("Invalid conversion type. Please enter 'C' for Celsius or 'F' for Fahrenheit.")  
 
 
 
